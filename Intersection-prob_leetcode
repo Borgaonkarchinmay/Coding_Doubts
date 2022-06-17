@@ -1,0 +1,32 @@
+/*
+Given two integer arrays nums1 and nums2, return an array of their intersection. 
+Each element in the result must appear as many times as it shows in both arrays and you may return the result in any order.
+
+Time Complexity: linear.
+But contains conditional statements in loop
+*/
+
+
+class Solution {
+public:
+    vector<int> intersect(vector<int>& nums1, vector<int>& nums2) {
+        vector<int> res;
+        sort(nums1.begin(), nums1.end());
+        sort(nums2.begin(), nums2.end());
+        
+        int i1 = 0, i2 = 0;
+        while(i1 < nums1.size() && i2 < nums2.size()){
+            if(nums1[i1] == nums2[i2]){
+                res.emplace_back(nums2[i2]);
+            }
+            else if(nums1[i1] < nums2[i2]){
+                i1++;
+            }
+            else{
+                i2++;
+            }
+        }
+        
+        return res;
+    }
+};
